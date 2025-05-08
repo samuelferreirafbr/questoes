@@ -4,32 +4,40 @@ import javax.swing.JOptionPane;
 public class Calculadora {
     public static void main(String[] args) {
 
-        float num1 = Float.parseFloat(JOptionPane.showInputDialog("Informe o valor A: "));
-        float num2 = Float.parseFloat(JOptionPane.showInputDialog("Informe o valor B: "));
+        float num1 = Float.parseFloat(JOptionPane.showInputDialog("Informe o primeiro valor: "));
+        float num2 = Float.parseFloat(JOptionPane.showInputDialog("Informe o segundo valor: "));
 
-    JOptionPane.showInputDialog("Escolha a operação: ");
-
-    float adicao = num1 + num2;
-    float subtracao = num1 - num2;
-    float multiplicacao = num1 * num2;
-    float divisao = num1 / num2;
+    String[] operacoes = {"+", "-", "*", "/"};
+        JComboBox<String> comboBox = new JComboBox<>(operacoes);
+        JOptionPane.showMessageDialog(null, comboBox, "Escolha a operação: ", JOptionPane.INFORMATION_MESSAGE);
 
 
-        if (operacao == '+') resultado = num1 + num2;
-        else if (operacao == '-') resultado = num1 - num2;
-        else if (operacao == '*') resultado = num1 * num2;
-        else if (operacao == '/') {
-            if (num2 != 0) resultado = num1 / num2;
-            else {
-                System.out.println("Erro: Divisão por zero!");
+    String operacao = (String) comboBox.getSelectedItem();
+    float resultado = 0;
+
+    switch (operacao) {
+        case "+":
+            resultado = num1 + num2;
+            break;
+        case "-":
+            resultado = num1 - num2;
+            break;
+        case "*":
+            resultado = num1 * num2;
+            break;
+        case "/":
+            if (num2 != 0) {
+                resultado = num1 / num2;
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro: Divisão por zero!", "Erro", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-        } else {
-            System.out.println("Essa operação é inválida!");
+            break;
+        default:
+            JOptionPane.showMessageDialog(null, "Essa operação é inválida!", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
-        System.out.println("Resultado: " + resultado);
+        JOptionPane.showMessageDialog(null, "Resultado: " + resultado, "Resultado", JOptionPane.INFORMATION_MESSAGE);
     }
 }
 
