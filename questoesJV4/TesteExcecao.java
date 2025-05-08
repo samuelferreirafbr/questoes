@@ -1,4 +1,4 @@
-// Letra E, pois após após o finally, no throw, foi lançado o "me", gerando então uma exceção nula
+/*  Letra E, pois após após o finally, no throw, foi lançado o "me", gerando então uma exceção nula
 
 class MinhaExcecao extends Exception { }
 public class TesteExcecao {
@@ -20,3 +20,4 @@ public class TesteExcecao {
         System.out.println("fim");
     }
 }
+*/
